@@ -12,63 +12,570 @@
     --border: #242f3d;
     --radius: 12px;
   }
-  * { margin:0; padding:0; box-sizing:border-box; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background:var(--bg);
-    color:var(--text);
-    min-height:100vh;
-    padding-bottom:80px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding-bottom: 80px;
   }
   .header {
-    background:linear-gradient(135deg,#1a2332 0%,#0e1621 100%);
-    padding:20px 16px 16px;
-    border-bottom:1px solid var(--border);
-    position:sticky; top:0; z-index:100;
+    background: linear-gradient(135deg, #1a2332 0%, #0e1621 100%);
+    padding: 20px 16px 16px;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
   }
-  .header h1 {font-size:20px;font-weight:700;display:flex;align-items:center;gap:8px;}
-  .header .subtitle {font-size:13px;color:var(--text-dim);margin-top:4px;}
+  .header h1 {
+    font-size: 20px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .header .subtitle {
+    font-size: 13px;
+    color: var(--text-dim);
+    margin-top: 4px;
+  }
   .status-dot {
-    width:8px;height:8px;background:var(--green);border-radius:50%;display:inline-block;
-    animation:pulse 2s infinite;
+    width: 8px; height: 8px;
+    background: var(--green);
+    border-radius: 50%;
+    display: inline-block;
+    animation: pulse 2s infinite;
   }
-  @keyframes pulse {0%,100%{opacity:1}50%{opacity:0.4}}
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
   .nav {
-    display:flex;overflow-x:auto;padding:12px 16px;gap:8px;
-    background:var(--bg);border-bottom:1px solid var(--border);
-    position:sticky;top:73px;z-index:99;scrollbar-width:none;
+    display: flex;
+    overflow-x: auto;
+    padding: 12px 16px;
+    gap: 8px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 73px;
+    z-index: 99;
+    scrollbar-width: none;
   }
-  .nav::-webkit-scrollbar{display:none}
+  .nav::-webkit-scrollbar { display: none; }
   .nav-tab {
-    padding:8px 16px;border-radius:20px;font-size:13px;font-weight:600;
-    white-space:nowrap;cursor:pointer;border:1px solid var(--border);
-    background:var(--card);color:var(--text-dim);transition:all .2s;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text-dim);
+    transition: all 0.2s;
   }
-  .nav-tab.active{background:var(--accent);color:#fff;border-color:var(--accent);}
-  .section{display:none;padding:16px;}
-  .section.active{display:block;}
-  .card{
-    background:var(--card);border-radius:var(--radius);padding:16px;
-    margin-bottom:12px;border:1px solid var(--border);
+  .nav-tab.active {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
   }
-  .card-title{
-    font-size:15px;font-weight:700;margin-bottom:12px;
-    display:flex;align-items:center;gap:8px;
+  .section { display: none; padding: 16px; }
+  .section.active { display: block; }
+  .card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 16px;
+    margin-bottom: 12px;
+    border: 1px solid var(--border);
   }
-  .card-subtitle{font-size:12px;color:var(--text-dim);margin-bottom:12px;}
-  .ticker-row{
-    display:flex;align-items:center;justify-content:space-between;
-    padding:10px 0;border-bottom:1px solid var(--border);
+  .card-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
-  .ticker-row:last-child{border-bottom:none;}
-  .ticker-info{display:flex;align-items:center;gap:10px;}
-  .ticker-icon{
-    width:36px;height:36px;border-radius:50%;
-    display:flex;align-items:center;justify-content:center;
-    font-size:14px;font-weight:700;color:#fff;
+  .card-subtitle {
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-bottom: 12px;
   }
-  .ticker-name{font-size:14px;font-weight:600;}
-  .ticker-desc{font-size:11px;color:var(--text-dim);}
-  .ticker-price{text-align:right;}
-  .ticker-price .price{font-size:15px;font-weight:700;}
-  .ticker-price .change{font-size:12px;font
+  .ticker-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .ticker-row:last-child { border-bottom: none; }
+  .ticker-info { display: flex; align-items: center; gap: 10px; }
+  .ticker-icon {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .ticker-name { font-size: 14px; font-weight: 600; }
+  .ticker-desc { font-size: 11px; color: var(--text-dim); }
+  .ticker-price { text-align: right; }
+  .ticker-price .price { font-size: 15px; font-weight: 700; }
+  .ticker-price .change { font-size: 12px; font-weight: 600; }
+  .up { color: var(--green); }
+  .down { color: var(--red); }
+  .neutral { color: var(--yellow); }
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .badge-buy { background: rgba(79,174,78,0.2); color: var(--green); }
+  .badge-hold { background: rgba(212,160,23,0.2); color: var(--yellow); }
+  .badge-sell { background: rgba(224,93,93,0.2); color: var(--red); }
+  .metrics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .metric {    background: rgba(255,255,255,0.03);
+    border-radius: 8px;
+    padding: 10px;text-align: center;
+  }
+  .metric-label { font-size: 10px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; }
+  .metric-value { font-size: 16px; font-weight: 700; margin-top: 4px; }
+  .allocation-bar {
+    height: 24px;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    margin: 12px 0 8px;
+  }
+  .alloc-segment {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+    color: #fff;
+    min-width: 40px;
+  }
+  .alloc-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 8px;
+  }
+  .alloc-item { display: flex; align-items: center; gap: 6px; font-size: 12px; }
+  .alloc-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .news-item {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .news-item:last-child { border-bottom: none; }
+  .news-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .news-tag.earnings { background: rgba(42,171,238,0.2); color: var(--accent); }
+  .news-tag.macro { background: rgba(212,160,23,0.2); color: var(--yellow); }
+  .news-tag.sector { background: rgba(79,174,78,0.2); color: var(--green); }
+  .news-text { font-size: 13px; line-height: 1.4; }
+  .score-bar {
+    height: 6px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: 6px;
+  }
+  .score-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.5s;
+  }
+  .empty {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-dim);
+  }
+  .empty-icon { font-size: 40px; margin-bottom: 12px; }
+  .empty-text { font-size: 14px; }
+  .refresh-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(42,171,238,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+  }
+  .refresh-btn:active { transform: scale(0.9); }
+  .timestamp {
+    font-size: 11px;
+    color: var(--text-dim);
+    text-align: center;
+    padding: 8px;
+  }
+</style>
+</head>
+<!-- Header -->
+<div class="header">
+  <h1>💶 Andrew Dashboard</h1>
+  <div class="subtitle"><span class="status-dot"></span> Live • Aggiornato: <span id="lastUpdate">--</span></div>
+</div>
+
+<!-- Navigation -->
+<div class="nav">
+  <div class="nav-tab active" onclick="showSection('overview', this)">📊 Overview</div>
+  <div class="nav-tab" onclick="showSection('portfolio', this)">💼 Portafoglio</div>
+  <div class="nav-tab" onclick="showSection('tech', this)">📈 Tech</div>
+  <div class="nav-tab" onclick="showSection('fundamental', this)">🔬 Fund.</div>
+  <div class="nav-tab" onclick="showSection('screener', this)">🚀 Screen</div>
+  <div class="nav-tab" onclick="showSection('catalyst', this)">🔔 Catalyst</div>
+  <div class="nav-tab" onclick="showSection('market', this)">🌍 Market</div>
+</div>
+
+<!-- Overview Section -->
+<div class="section active" id="sec-overview">
+  <div class="card">
+    <div class="card-title">📊 Riepilogo Giornaliero</div>
+    <div class="card-subtitle">Ultimo briefing disponibile</div>
+    <div id="overview-content">
+      <div class="empty">
+        <div class="empty-icon">📭</div>
+        <div class="empty-text">Nessun report ancora disponibile.<br>I briefing arriveranno qui automaticamente.</div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">⚡ Ultimi Segnali</div>
+    <div class="ticker-row">
+      <div class="ticker-info">
+    <div class="ticker-icon" style="background:#76b900">NVDA</div>
+        <div><div class="ticker-name">NVIDIA</div><div class="ticker-desc">AI / Semiconduttori</div></div>
+      </div>
+      <div class="ticker-price"><div class="price">$204.87</div><div class="change up">▲ +2.22%</div></div>
+    </div>
+    <div class="ticker-row">
+      <div class="ticker-info">
+        <div class="ticker-icon" style="background:#1877f2">META</div>
+        <div><div class="ticker-name">Meta Platforms</div><div class="ticker-desc">Social / AI</div></div>
+      </div>
+      <div class="ticker-price"><div class="price">$180.50</div><div class="change down">▼ -0.50%</div></div>
+    </div>
+    <div class="ticker-row">
+      <div class="ticker-info">
+        <div class="ticker-icon" style="background:#4fae4e">SOXX</div>
+        <div><div class="ticker-name">MSCI Semi ESG ETF</div><div class="ticker-desc">Semiconduttori</div></div>
+      </div>
+      <div class="ticker-price"><div class="price">$52.30</div><div class="change down">▼ -0.82%</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Portfolio Section -->
+<div class="section" id="sec-portfolio">
+  <div class="card">
+    <div class="card-title">💼 Portafoglio</div>
+    <div class="card-subtitle">Trade Republic • Stato: FLAT</div>
+    <div class="metrics">
+      <div class="metric"><div class="metric-label">Totale</div><div class="metric-value">€936.79</div></div>
+      <div class="metric"><div class="metric-label">P&L</div><div class="metric-value" style="color:var(--red)">-€49.21</div></div>
+      <div class="metric"><div class="metric-label">Rendimento</div><div class="metric-value" style="color:var(--red)">-4.99%</
+<div class="metric"><div class="metric-label">Liquidità</div><div class="metric-value">€563.21</div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">📊 Allocazione</div>
+    <div class="allocation-bar">
+      <div class="alloc-segment" style="width:45%;background:#76b900">NVDA 45%</div>
+      <div class="alloc-segment" style="width:29%;background:#2aabee">SOXX 29%</div>
+      <div class="alloc-segment" style="width:26%;background:#1877f2">META 26%</div>
+    </div>
+    <div class="alloc-legend">
+      <div class="alloc-item"><div class="alloc-dot" style="background:#76b900"></div>NVDA €422.70</div>
+      <div class="alloc-item"><div class="alloc-dot" style="background:#2aabee"></div>SOXX €273.08</div>
+      <div class="alloc-item"><div class="alloc-dot" style="background:#1877f2"></div>META €241.01</div>
+</div>
+  <div class="card">
+    <div class="card-title">🎯 Proposte Core-Satellite</div>
+    <div class="ticker-row">
+      <div class="ticker-info"><div class="ticker-icon" style="background:#2aabee">SWDA</div><div><div class="ticker-name">MSCI World ETF</div><div class="ticker-desc">Core • 45%</div></div></div>
+      <span class="badge badge-buy">CORE</span>
+    </div>
+    <div class="ticker-row">
+      <div class="ticker-info"><div class="ticker-icon" style="background:#76b900">NVDA</div><div><div class="ticker-name">NVIDIA</div><div class="ticker-desc">Satellite • 20%</div></div></div>
+      <span class="badge badge-buy">SAT</span>
+    </div>
+    <div class="ticker-row">
+      <div class="ticker-info"><div class="ticker-icon" style="background:#0078d4">MSFT</div><div><div class="ticker-name">Microsoft</div><div class="ticker-desc">Satellite • 15%</div></div></div>
+      <span class="badge badge-hold">SAT</span>
+    </div>
+    <div class="ticker-row">
+      <div class="ticker-info"><div class="ticker-icon" style="background:#f7931a">AVGO</</div>
+  <div class="card">
+    <div class="card-title">🎯 Proposte Core-Satellite</div>
+    <div class="ticker-row">
+      <div class="ticker-info"><div class="ticker-icon" style="background:#2aabee">SWDA</div><div><div class="ticker-name">MSCI World ETF</div><div class="ticker-desc">Core • 45%</div></div></div>
+      <span class="badge badge-buy">CORE</span>
+    </div>
+    <div class="ticker-row">
+      <div class="ticker-info"><div class="ticker-icon" style="background:#76b900">NVDA</div><div><div class="ticker-name">NVIDIA</div><div class="ticker-desc">Satellite • 20%</div></div></div>
+      <span class="badge badge-buy">SAT</span>
+    </div>
+    <div class="ticker-row">
+      <div class="ticker-info"><div class="ticker-icon" style="background:#0078d4">MSFT</div><div><div class="ticker-name">Microsoft</div><div class="ticker-desc">Satellite • 15%</div></div></div>
+      <span class="badge badge-hold">SAT</span>
+    </div>
+    <div class="ticker-row">
+      <div class="ticker-info"><div class="ticker-icon" style="background:#f7931a">AVGO</div><div><div class="ticker-name">Broadcom</div><div class="ticker-desc">Satellite • 10%</div></div></div>
+      <span class="badge badge-hold">SAT</span>
+    </div>
+  </div>
+</div>
+
+<!-- Tech Section -->
+<div class="section" id="sec-tech">
+  <div class="card">
+    <div class="card-title">📈 Analisi Tecnica</div>
+    <div class="card-subtitle">Ultimo aggiornamento: 11 Giugno 2026</div>
+    <div class="ticker-row">
+      <div class="ticker-info"><div class="ticker-icon" style="background:#76b900">AMD</div><div><div class="ticker-name">AMD</div><div class="ticker-desc">RSI 50.39 • Golden Cross</div></div></div>
+      <span class="badge badge-buy">🟢 BUY</span>
+    </div>
+    <div class="ticker-row">
+      <div class="ticker-info"><div class="ticker-icon" style="background:#76b900">NVDA</div><div><div class="ticker-name">Broadcom</div><div class="ticker-desc">Satellite • 10%</div></div></div>
+      <span class="badge badge-hold">SAT</span>
+    </div>
+  </div>
+</div>
+
+<!-- Tech Section -->
+<div class="section" id="sec-tech">
+  <div class="card">
+    <div class="card-title">📈 Analisi Tecnica</div>
+    <div class="card-subtitle">Ultimo aggiornamento: 11 Giugno 2026</div>
+    <div class="ticker-row">
+      <div class="ticker-info"><div class="ticker-icon" style="background:#76b900">AMD</div><div><div class="ticker-name">AMD</div><div class="ticker-desc">RSI 50.39 • Golden Cross</div></div></div>
+      <span class="badge badge-buy">🟢 BUY</span>
+    </div>
+    <div class="ticker-row">
+      <div class="ticker-info"><div class="ticker-icon" style="background:#76b900">NVDA</div><div><div class="ticker-name">NVIDIA</div><div class="ticker-desc">Trend positivo • RSI neutro</div></div></div>
+      <span class="badge badge-hold">🟡 HOLD</span>
+    </div>
+    <div class="ticker-row">
+      <div class="ticker-info"><div class="ticker-icon" style="background:#f7931a">AVGO</div><div><div class="ticker-name">Broadcom</div><div class="ticker-desc">Consolidamento • RSI 55</div></div></div>
+      <span class="badge badge-hold">🟡 HOLD</span>
+    </div>
+    <div class="ticker-row">
+      <div class="ticker-info"><div class="ticker-icon" style="background:#1877f2">META</div><div><div class="ticker-name">Meta</div><div class="ticker-desc">Death Cross • RSI 42</div></div></div>
+      <span class="badge badge-sell">🔴 SELL</span>
+    </div>
+    <div class="ticker-row">
+      <div class="ticker-info"><div class="ticker-icon" style="background:#0078d4">MSFT</div><div><div class="ticker-name">Microsoft</div><div class="ticker-desc">Death Cross • RSI 38</div></div></div>
+      <span class="badge badge-sell">🔴 SELL</span>
+    </div>
+<div class="ticker-row">    <div class="ticker-info"><div class="ticker-icon" style="background:#e05d5d">PLTR</div><div><div class="ticker-name">Palantir</div><div class="ticker-desc">Death Cross • RSI 35</div></div></div>
+      <span class="badge badge-sell">🔴 SELL</span>
+    </div>
+  </div>
+</div>
+
+<!-- Fundamental Section -->
+<div class="section" id="sec-fundamental">
+  <div class="card">
+    <div class="card-title">🔬 Analisi Fondamentale</div>
+    <div class="card-subtitle">Ultimo aggiornamento: 11 Giugno 2026</div>
+    <div class="ticker-row">
+      <div class="ticker-info"><div class="ticker-icon" style="background:#76b900">NVDA</div><div><div class="ticker-name">NVIDIA</div><div class="ticker-desc">P/E 35.2 • PEG 0.8 • Rev +112%</div></div></div>
+      <span class="badge badge-buy">STRONG BUY</span>
+    </div>
+    <div class="ticker-row">
+      <div class="ticker-info"><div class="ticker-icon" style="background:#0078d4">MSFT</div><div><div class="ticker-name">Microsoft</div><div class="ticker-desc">P/E 32.1 • PEG 1.1 1.1
+• Rev +15%</div></div></div<span class="badge badge-buy">STRONG BUY</span>
+    </div>
+    <div class="ticker-row">
+      <div class="ticker-info"><div class="ticker-icon" style="background:#1877f2">META</div><div><div class="ticker-name">Meta</div><div class="ticker-desc">P/E 24.5 • PEG 0.9 • Rev +20%</div></div></div>
+      <span class="badge badge-buy">STRONG BUY</span>
+    </div>
+    <div class="ticker-row">
+      <div class="ticker-info"><div class="ticker-icon" style="background:#76b900">AMD</div><div><div class="ticker-name">AMD</div><div class="ticker-desc">P/E 28.3 • PEG 1.2 • Rev +57%</div></div></div>
+      <span class="badge badge-buy">BUY</span>
+    </div>
+    <div class="ticker-row">
+      <div class="ticker-info"><div class="ticker-icon" style="background:#f7931a">AVGO</div><div><div class="ticker-name">Broadcom</div><div class="ticker-desc">P/E 22.1 • PEG 1.4 • Rev +45%</div></div></div>
+      <span class="badge badge-buy">BUY</span>
+    </div>
+    <div class="ticker-row">
+      <div class="ticker-info"><div class="ticker-icon" style="background:#003366">LMT</div><div><div class="ticker-name">Lockheed Martin</div><div class="ticker-desc">P/E 18.5 • PEG 1.8 • Rev +8%</div></div></div>
+      <span class="badge badge-hold">HOLD</span>
+    </div>
+    <div class="ticker-row">
+      <div class="ticker-info"><div class="ticker-icon" style="background:#1a1a2e">RKLB</div><div><div class="ticker-name">Rocket Lab</div><div class="ticker-desc">P/E N/A • PEG N/A • Pre-profit</div></div></div>
+      <span class="badge badge-sell">SELL</span>
+    </div>
+  </div><!-- Screener Section -->
+<div class="section" id="sec-screener">
+  <div class="card">
+    <div class="card-title">🚀 Weekly Screener</div>
+    <div class="card-subtitle">Ultimo screen: 11 Giugno 2026</div>
+    <div class="ticker-row">
+      <div class="ticker-info"><div class="ticker-icon" style="background:#0078d4">MU</div><div><div class="ticker-name">Micron</div><div class="ticker-desc">AI Memory • 5/5 filtri</div></div></div>
+      <div class="ticker-price"><div class="price">Score</div><div class="change up">⭐ 9.5</div></div>
+    </div>
+    <div class="score-bar"><div class="score-fill" style="width:95%;background:var(--green)"></div></div>
+    <div class="ticker-row">
+      <div class="ticker-info"><div class="ticker-icon" style="background:#0055a4">MRVL</div><div><div class="ticker-name">Marvell</div><div class="ticker-desc">Custom AI Chips • 5/5 filtri</div></div></div>
+      <div class="ticker-price"><div class="price">Score</div><div class="change up">⭐ 9.2</div></div>
+    </div>
+    <div class="score-bar"><div class="score-fill" style="width:92%;background:var(--green)"></div></div>
+    <div class="ticker-row">
+      <div class="ticker-info"><div class="ticker-icon" style="background:#e05d5d">NXPI</div><div><div class="ticker-name">NXP Semi</div><div class="ticker-desc">Auto/IoT • 5/5 filtri</div></div></div>
+      <div class="ticker-price"><div class="price">Score</div><div class="change up">⭐ 8.8</div></div>
+    </div>
+    <div class="score-bar"><div class="score-fill" style="width:88%;background:var(--green)"></div></div>
+    <div class="ticker-row">
+      <div class="ticker-info"><div class="ticker-icon" style="background:#003366">LHX</div><div><div class="ticker-name">L3Harris</div><div class="ticker-desc">Difesa • 4/5 filtri</div></div></div>
+      <div class="ticker-price"><div class="price">Score</div><div class="change neutral">⭐ 8.0</div></div>
+    </div>
+    <div class="score-bar"><div class="score-fill" style="width:80%;background:var(--yellow)"></div></div>
+    <div class="ticker-row">
+      <div class="ticker-info"><div class="ticker-icon" style="background:#c41230">RTX</div><div><div class="ticker-name">Raytheon</div><div class="ticker-desc">Difesa/Aero • 4/5 filtri</div></div></div>
+      <div class="ticker-price"><div class="price">Score</div><div class="change neutral">⭐ 7.5</div></div>
+    </div>
+    <div class="score-bar"><div class="score-fill" style="width:75%;background:var(--yellow)"></div></div>
+  </div>
+  <div class="card">
+    <div class="card-title">🃏 Wildcards</div>
+    <div class="ticker-row">
+      <div class="ticker-info"><div class="ticker-icon" style="background:#0055a4">ARM</div><div><div class="ticker-name">ARM Holdings</div><div class="ticker-desc">Licensing AI • Alto rischio</div></div></div>
+      <span class="badge badge-hold">🎲 WILD</span>
+    </div><div class="ticker-info"><div class="ticker-icon" style="background:#00b4d8">GEV</div><div><div class="ticker-name">GE Vernova</div><div class="ticker-desc">Energia/Grid • Alto potenziale</div></div></div>
+      <span class="badge badge-hold">🎲 WILD</span>
+    </div>
+  </div>
+</div>
+
+<!-- Catalyst Section -->
+<div class="section" id="sec-catalyst">
+  <div class="card">
+    <div class="card-title">🔔 Catalizzatori</div>
+    <div class="card-subtitle">Ultimo monitor: 11 Giugno 2026</div>
+    <div class="news-item">
+      <span class="news-tag macro">🏦 MACRO</span>
+      <div class="news-text">FOMC 18-19 Giugno — Decisione tassi attesa. Mercati pricing 96% hold.</div>
+    </div>
+    <div class="news-item">
+      <span class="news-tag macro">📊 MACRO</span>
+      <div class="news-text">CPI USA — Dati inflazione chiave. Impatto su tassi e mercati growth.</div>
+    </div>
+    <div class="news-item">
+      <span class="news-tag sector">🤖<div class="news-text">AVGO: AI revenue $10.8B (+220% YoY). Chip custom per hyperscaler in crescita.</div>
+    </div>
+    <div class="news-item">
+      <span class="news-tag sector">🚀 DEF</span>
+      <div class="news-text">PLTR: Contratti commerciali +133% YoG. AIP adoption accelerando.</div>
+    </div>
+    <div class="news-item">
+      <span class="news-tag sector">💻 DC</span>
+      <div class="news-text">AMD: Data Center revenue +57%. MI300X gaining share vs NVDA.</div>
+    </div>
+    <div class="news-item">
+      <span class="news-tag sector">🚀 SPACE</span>
+      <div class="news-text">RKLB: Neutron launch Q3 target. Contratti NASA in pipeline.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Market Section -->
+<div class="section" id="sec-market">
+  <div class="card">
+    <div class="card-title">🌍 Market Briefing</div>
+    <div class="card-subtitle">Ultimo briefing: 12 Giugno 2026</div>
+    <div class="metrics">
+      <div class="metric"><div class="metric-label">S&P 500</div><div class="metric-value">7,394</div><div class="change up" style="font-size:11px">▲ +1.75%</div></div>
+      <div class="metric"><div class="metric-label">NASDAQ</div><div class="metric-value">25,810</div><div class="change up" style="font-size:11px">▲ +2.54%</div></div>
+      <div class="metric"><div class="metric-label">DAX</div><div class="metric-value">23,949</div><div class="change down" style="font-size:11px">▼ -0.16%</div></div>
+      <div class="metric"><div class="metric-label">FTSE 100</div><div class="metric-value">8,864</div><div class="change up" style="font-size:11px">▲ +0.13%</div></div>
+      <div class="metric"><div class="metric-label">VIX</div><div class="metric-value">15.77</div><div class="change neutral" style="font-size:11px">Calma</div></div>
+      <div class="metric"><div class="metric-label">10Y Treasury</div><div class="metric-value">4.42%</div><div class="change neutral" style="font-size:11px">Stabile</div></div>
+      <div class="metric"><div class="metric-label">Oro</div><div class="metric-value">$4,234</div><div class="change up" style="font-size:11px">▲ +2.43%</div></div>
+      <div class="metric"><div class="metric-label">Brent</div><div class="metric-value">$89.09</div><div class="change down" style="font-size:11px">▼ -4.31%</div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">📝 Sentiment</div>
+    <div style="text-align:center;padding:16px">
+      <div style="font-size:48px">📈</div>
+      <div style="font-size:18px;font-weight:700;color:var(--green);margin-top:8px">EUFORIA CAUTA</div>
+      <div style="font-size:13px;color:var(--text-dim);margin-top:8px">
+        Mercati in rimbalzo dopo tensioni Iran. VIX compresso.
+        Attenzione a CPI e FOMC come catalizzatori chiave.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Refresh button -->
+<button class="refresh-btn" onclick="refreshData()" title="Aggiorna">↻</button>
+
+<div class="timestamp" id="footer-ts"></div>
+
+<script>
+  if (window.Telegram && Telegram.WebApp) {
+    Telegram.WebApp.ready();
+    Telegram.WebApp.expand();
+  }
+
+  function showSection(id, el) {
+    document.querySelectorAll('.section').forEach(s => document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('sec-' + id).classList.add('active');
+    el.classList.add('active');
+  }
+
+  function updateTimestamp() {
+    const now = new Date();
+    const ts = now.toLocaleString('it-IT', {
+      day: '2-digit', month: '2-digit', year: 'numeric',
+      hour: '2-digit', minute: '2-digit'
+    });
+    document.getElementById('lastUpdate').textContent = ts;
+    document.getElementById('footer-ts').textContent = 'Aggiornato: ' + ts;
+  }
+
+  function refreshData() {
+    const btn = document.querySelector('.refresh-btn');
+    btn.style.transform = 'rotate(360deg)';
+    btn.style.transition = 'transform 0.5s';
+    setTimeout(() => { btn.style.transform = ''; updateTimestamp();
+    if (window.Telegram && Telegram.WebApp) {
+      Telegram.WebApp.sendData(JSON.stringify({action: 'refresh'}));
+    }
+  }
+
+  updateTimestamp();
+  setInterval(updateTimestamp, 300000);
+</script>
+</body>
+
+
